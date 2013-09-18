@@ -12,6 +12,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/board.css" rel="stylesheet">
+
 
     <!-- Custom styles for this template -->
     <link href="static/css/starter-template.css" rel="stylesheet">
@@ -37,10 +39,10 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/game_board">Game Board</a></li>
+            <li class="active"><a href="/game_board">Game Board</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -49,21 +51,51 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Quizzing Bricks</h1>
-        <p class="lead">Soon in a browser close to you
+        <h1>Game board</h1>
+        <p class="lead"> Where the magic happens! :D
+        <div id="board">
+          <div id ="square_div">
+            {% set hor_scale = 64.8 %}
+            {% set ver_scale = 64.4 %}
+            {% for x in range(1, 9) %}
+              {% for y in range(1, 9) %}
+                {% set LEFT = ((x-1)*hor_scale) %}
+                {% set TOP = (y-1)*ver_scale %}  
+                <!-- BEGIN square -->
+                <div id="square_{{x}}_{{y}}" class="square" style="left: {{LEFT}}px; top: {{TOP}}px;">{{x}}.{{y}}</div>
+                <!-- END square -->
+                {% endfor %}
+              {% endfor %}
+          </div>
+          <div id="tokens">
+          </div>
+        </div>
+
+
+
       </div>
+
+      
 
     </div><!-- /.container -->
 
 
 
+<script type="text/javascript">
 
+// Templates
 
+var jstpl_token='<div class="token tokencolor_${color}" id="token_${x_y}"></div>';
 
+</script>
+
+    
+    <script src="static/js/add_Token.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="static/assets/js/jquery.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
+    
   </body>
 </html>
