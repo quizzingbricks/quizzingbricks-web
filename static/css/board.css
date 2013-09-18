@@ -1,0 +1,5 @@
+#board {
+   width: 536px;
+   height: 528px;
+   background-image: url('/static/img/Board.jpg');
+}
