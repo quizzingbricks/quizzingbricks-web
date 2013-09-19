@@ -16,13 +16,13 @@
     height: 62px;
     color: black;
     position: absolute;
-    /*background-color: red; */  
+    /*background-color: red; */   
 }
 
 .token {
     width: 56px;
     height: 56px;
-    position: absolute;
+  /*  position: absolute; */
     background-image: url('/static/img/Tokens.png');
 }
 .tokencolor_ffffff { background-position: 0px 0px;   }

@@ -16,10 +16,11 @@ def contact():
 	return render_template('contact.html')
 
 @app.route('/game_board')
-def game_board():
+def game_board ():
 	return render_template('game_board.html')
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(host='0.0.0.0')
+  #  app.run(debug=True)
