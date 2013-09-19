@@ -15,6 +15,8 @@
     <link href="static/css/board.css" rel="stylesheet">
 
 
+
+
     <!-- Custom styles for this template -->
     <link href="static/css/starter-template.css" rel="stylesheet">
 
@@ -48,11 +50,19 @@
       </div>
     </div>
 
+  
+
     <div class="container">
 
       <div class="starter-template">
         <h1>Game board</h1>
         <p class="lead"> Where the magic happens! :D
+         <div class="choose_player">
+          Choose Player:
+          <button type="button" onclick='changeText("Black")'>Black</button>
+          <button type="button" onclick='changeText("White")'>White</button>
+          <br>Current Player = <b id='player_color'> Black </b>
+        </div>
         <div id="board">
           <div id ="square_div">
             {% set hor_scale = 64.8 %}
@@ -62,13 +72,17 @@
                 {% set LEFT = ((x-1)*hor_scale) %}
                 {% set TOP = (y-1)*ver_scale %}  
                 <!-- BEGIN square -->
-                <div id="square_{{x}}_{{y}}" class="square" style="left: {{LEFT}}px; top: {{TOP}}px;">{{x}}.{{y}}</div>
+                <div id="square_{{x}}_{{y}}" class="square" style="left: {{LEFT}}px; top: {{TOP}}px;">
+                <!--{{x}}.{{y}}--></div>
                 <!-- END square -->
                 {% endfor %}
               {% endfor %}
+            
           </div>
-          <div id="tokens">
-          </div>
+        <!--  <div id="tokens" width="100" height="100">
+          Token test
+          <img id="test pic" src="/static/img/Tokens.png"/>
+          </div> -->
         </div>
 
 
@@ -79,8 +93,41 @@
 
     </div><!-- /.container -->
 
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- 
+function changeText(txt){
+  document.getElementById('player_color').innerHTML = txt;
+}
+
+// -->
+</script>
 
 
+
+
+<script type="text/javascript">
+window.onload=function(){
+var black_token = document.createElement("img");
+black_token.setAttribute("src", "/static/img/Black_Token.png");
+black_token.setAttribute("height", "56");
+black_token.setAttribute("width", "56");
+
+var white_token = document.createElement("img");
+white_token.setAttribute("src", "/static/img/White_Token.png");
+white_token.setAttribute("height", "56");
+white_token.setAttribute("width", "56");
+
+document.getElementById("square_2_2").appendChild(black_token);
+document.getElementById("square_2_3").appendChild(white_token);
+}
+</script>
+<div id="placehere">
+
+</div>
+
+
+<!--
 <script type="text/javascript">
 
 // Templates
@@ -88,14 +135,14 @@
 var jstpl_token='<div class="token tokencolor_${color}" id="token_${x_y}"></div>';
 
 </script>
-
+-->
     
     <script src="static/js/add_Token.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="static/assets/js/jquery.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
+   <!-- <script src="static/js/bootstrap.min.js"></script> -->
     
   </body>
 </html>
