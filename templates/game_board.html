@@ -50,7 +50,7 @@
       </div>
     </div>
 
-  
+
 
     <div class="container">
 
@@ -61,7 +61,7 @@
           Choose Player:
           <button type="button" onclick='changeText("Black")'>Black</button>
           <button type="button" onclick='changeText("White")'>White</button>
-          <br>Current Player = <b id='player_color'> Black </b>
+          <br>Current Player = <b id='player_color'> Choose player! </b>
         </div>
         <div id="board">
           <div id ="square_div">
@@ -72,7 +72,7 @@
                 {% set LEFT = ((x-1)*hor_scale) %}
                 {% set TOP = (y-1)*ver_scale %}  
                 <!-- BEGIN square -->
-                <div id="square_{{x}}_{{y}}" class="square" style="left: {{LEFT}}px; top: {{TOP}}px;">
+                <div id="square_{{x}}_{{y}}" onclick='addTokens({{x}},{{y}})' class="square" style="left: {{LEFT}}px; top: {{TOP}}px;">
                 <!--{{x}}.{{y}}--></div>
                 <!-- END square -->
                 {% endfor %}
@@ -93,12 +93,56 @@
 
     </div><!-- /.container -->
 
+
+
 <SCRIPT LANGUAGE="JavaScript">
 
-<!-- 
+
+var list = new Array(9);
+for(var i=1; i<9;i++){
+  list[i] = new Array(9);
+}
+
+function create_black_token() {
+    var black_token = document.createElement("img");
+    black_token.setAttribute("src", "static/img/Black_Token.png");
+    black_token.setAttribute("height", "56");
+    black_token.setAttribute("width", "56");
+    
+    return black_token;
+}
+
+function create_white_token() {
+    var white_token = document.createElement("img");
+    white_token.setAttribute("src", "static/img/White_Token.png");
+    white_token.setAttribute("height", "56");
+    white_token.setAttribute("width", "56");
+    
+    return white_token;
+}
+
 function changeText(txt){
   document.getElementById('player_color').innerHTML = txt;
 }
+
+function addTokens(x,y) {
+    player_color = document.getElementById('player_color').innerHTML
+    if(list[x][y]==null){
+      if(player_color == "Black") {
+          list[x][y] = "black_token";
+          document.getElementById("square_" + x + "_" + y).appendChild(create_black_token());
+          
+      }
+      else if(player_color == "White"){
+
+          list[x][y] = "white_token";
+          document.getElementById("square_" + x + "_" + y).appendChild(create_white_token());
+
+      }
+ 
+    }
+}
+
 
 // -->
 </script>
@@ -106,25 +150,8 @@ function changeText(txt){
 
 
 
-<script type="text/javascript">
-window.onload=function(){
-var black_token = document.createElement("img");
-black_token.setAttribute("src", "/static/img/Black_Token.png");
-black_token.setAttribute("height", "56");
-black_token.setAttribute("width", "56");
 
-var white_token = document.createElement("img");
-white_token.setAttribute("src", "/static/img/White_Token.png");
-white_token.setAttribute("height", "56");
-white_token.setAttribute("width", "56");
 
-document.getElementById("square_2_2").appendChild(black_token);
-document.getElementById("square_2_3").appendChild(white_token);
-}
-</script>
-<div id="placehere">
-
-</div>
 
 
 <!--
