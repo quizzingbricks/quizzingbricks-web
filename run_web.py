@@ -1,7 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, request, session, g, redirect, url_for, \
+     abort, render_template, flash
 
+#configuration
+
+USERNAME = 'admin'
+PASSWORD = 'pass'
+SECRET_KEY = 'development key'
 
 app = Flask(__name__)
+app.config.from_object(__name__)
 
 @app.route('/')
 def index():
@@ -30,14 +37,14 @@ def login():
         else:
             session['logged_in'] = True
             flash('You were logged in')
-            return redirect(url_for('show_entries'))
+            return redirect(url_for('index'))
     return render_template('login.html', error=error)
 
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
-    return redirect(url_for('show_entries'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
 #	app.run(host='0.0.0.0')
