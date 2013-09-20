@@ -49,23 +49,25 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Quizzing Bricks</h1>
-        <p class="lead">Soon in a browser close to you
-      </div>
+        <h2>Login</h2>
+        {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+        <form action="{{ url_for('login') }}" method=post>
+        <dl>
+          <dt>Username:
+          <dd><input type=text name=username>
+          <dt>Password:
+          <dd><input type=password name=password>
+          <dd><input type=submit value=Login>
+        </dl>
+        
+    </form>
 
+      <form action="{{ url_for('logout') }}" >
+        <dl>
+          <dd><input type=submit value=Logout>
+        </dl>
+    </form>
 
-
-       <div class=metanav>
-          {% if not session.logged_in %}
-            <a href="{{ url_for('login') }}">log in</a>
-          {% else %}
-            <a href="{{ url_for('logout') }}">log out</a>
-          {% endif %}
-          </div>
-          {% for message in get_flashed_messages() %}
-            <div class=flash>{{ message }}</div>
-          {% endfor %}
     </div><!-- /.container -->
 
 

@@ -18,4 +18,3 @@ to install all the dependencies in the requirements.txt file
 
 kolla active if endpoint för side/top bar
 jinja2 includes
-http://jinja.pocoo.org/docs/templates/#template-inheritance
