@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, \
-     abort, render_template, flash
+     abort, render_template, flash, jsonify
 
 #configuration
 
@@ -19,12 +19,10 @@ def about():
 	return render_template('about.html')
 
 @app.route('/contact')
-def contact():
+def contact():	
 	return render_template('contact.html')
 
-@app.route('/game_board')
-def game_board ():
-	return render_template('game_board.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -36,6 +34,7 @@ def login():
             error = 'Invalid password'
         else:
             session['logged_in'] = True
+
             flash('You were logged in')
             return redirect(url_for('index'))
     #return render_template('login.html', error=error)
@@ -46,6 +45,19 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('index'))
 
+
+@app.route('/game_board',methods=["GET"])
+def game_board ():
+	return render_template('game_board.html')
+
+
+@app.route('/game_board', methods=["POST"])
+def tile_placement():
+    x = request.form.get('x', 0, type=int)
+    y = request.form.get('y', 0, type=int)
+    return jsonify(result =(x,y))
+
+
 if __name__ == '__main__':
-#	app.run(host='0.0.0.0')
+#	app.run(host='0.0.0.0',debug=True)
     app.run(debug=True)
