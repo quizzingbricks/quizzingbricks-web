@@ -42,5 +42,12 @@ function addTokens(x,y) {
     if (board[x][y] == null && selected_token != null) {
         board[x][y] = selected_token;
         board_element.appendChild(create_token(selected_token));
+        
+        $.post($SCRIPT_ROOT + '/game_board', { x: x, y: y },
+        function(data) {
+        $("#result").text(data.result);
+      });
     }
 }
+
+

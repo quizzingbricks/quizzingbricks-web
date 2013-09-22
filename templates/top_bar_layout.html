@@ -52,24 +52,6 @@
               <li{% if id == active_page %} class="active"{% endif
               %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
             {% endfor %}
-
-
-           
-
-
-
-<!--
-               {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-        <form action="{{ url_for('login') }}" method=post>
-       
-          <dd><input id="login_form_user"  type=text placeholder="Username" name=username>
-          <dd><input id="login_form_pass"  type=password placeholder="Password" name=password>
-          <dd><input id="login"  type=submit value=Login>
-        
-        </form> -->
-<!--
- <li><a href="{{ url_for('login') }}">Log in</a></li>
--->
           </ul>
   
           <ul id="navbar_right" class="nav navbar-nav">
@@ -102,7 +84,9 @@
 
 
 
-
+  <script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
