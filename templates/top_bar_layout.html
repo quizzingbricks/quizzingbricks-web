@@ -16,6 +16,7 @@
 
 
     <!-- Custom styles for this template -->
+    <link href="static/css/top_bar_layout.css" rel="stylesheet">
     <link href="static/css/starter-template.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,7 +37,7 @@
   <body>
   {% block top_bar %}
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div id="navbar_container" class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -51,13 +52,46 @@
               <li{% if id == active_page %} class="active"{% endif
               %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
             {% endfor %}
-            {% if not session.logged_in %}
-              <li><a href="{{ url_for('login') }}">Log in</a></li>
+
+
+           
+
+
+
+<!--
+               {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+        <form action="{{ url_for('login') }}" method=post>
+       
+          <dd><input id="login_form_user"  type=text placeholder="Username" name=username>
+          <dd><input id="login_form_pass"  type=password placeholder="Password" name=password>
+          <dd><input id="login"  type=submit value=Login>
+        
+        </form> -->
+<!--
+ <li><a href="{{ url_for('login') }}">Log in</a></li>
+-->
+          </ul>
+  
+          <ul id="navbar_right" class="nav navbar-nav">
+             {% if not session.logged_in %}
+                {% if error %}<li><td><p id="login_form_error" class=error><strong><font color= white >Error:</font></strong> <font color= white >{{ error }}</font></td></li>{% endif %}
+            <li><div id="login_container">
+         
+                <form action="{{ url_for('login') }}" method=post>
+         
+                  <td><input id="login_form_user"  type=text placeholder="Username" name=username></td>
+                  <td><input id="login_form_pass"  type=password placeholder="Password" name=password></td>
+                  <td><input id="login_form_submit"  type=submit value=Login></td>
+                </form>
+            </div></li>
               {% else %}
               <li><a href="{{ url_for('logout') }}">Log out</a></li>
               {% endif %}
-          </ul>
+           </ul>
+
         </div><!--/.nav-collapse -->
+
+
       </div>
     </div>
   {% endblock %}

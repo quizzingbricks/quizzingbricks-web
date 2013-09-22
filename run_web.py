@@ -38,7 +38,7 @@ def login():
             session['logged_in'] = True
             flash('You were logged in')
             return redirect(url_for('index'))
-    return render_template('login.html', error=error)
+    #return render_template('login.html', error=error)
 
 @app.route('/logout')
 def logout():
@@ -47,5 +47,5 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0')
- #   app.run(debug=True)
+#	app.run(host='0.0.0.0')
+    app.run(debug=True)

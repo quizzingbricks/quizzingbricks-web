@@ -1,0 +1,20 @@
+#navbar_container {
+  max-width:1920px;
+  padding-left:475px;
+}
+
+#login_container {
+
+  padding-top: 12px;
+
+}
+
+#navbar_right {
+  float:right;
+  
+}
+
+#login_form_error {
+  padding-top:15px;
+  margin-right: 10px;
+     }
