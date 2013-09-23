@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="static/css/top_bar_layout.css" rel="stylesheet">
-    <link href="static/css/starter-template.css" rel="stylesheet">
+    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,73 +56,46 @@
   
           <ul id="navbar_right" class="navbar-form navbar-right">
              {% if not session.logged_in %}
-        <!--        {% if error %}
-                
-                <li><td><p id="login_form_error" class=error  ><strong><font color= white >Error:</font></strong> <font color= white >{{ error }}</font></td></li>
-               
-
-
-
-                {% endif %} --> 
-
               <form action="{{ url_for('login') }}" class="form-inline"  method=post>
                 <div class="form-group">
-                 
                   <input class="form-control" type=text placeholder="Username" name=username>
                 </div>
                 <div class="form-group">
-                  
                   <input type=password class="form-control" placeholder="Password" name=password>
                 </div>
                 <!--<div class="checkbox">
                   <label>
-                    <input type="checkbox"> <font color=White>Remember me <font>
+                    <input type="checkbox"> <font color=White>Remember me <font>     saving if we want to use later 
                   </label>
                 </div> -->
                 <button  class="btn btn-success" type=submit value=Login >Login </button>
               </form> 
               {% else %}
-              <form action="{{ url_for('logout') }}"  >
-              <button  class="btn btn-default" type=submit value=Logout >Logout </button>
-              </form>
+                <form action="{{ url_for('logout') }}"  >
+                  <button  class="btn btn-default" type=submit value=Logout >Logout </button>
+                </form>
               {% endif %}
            </ul> 
-
+        
         </div><!--/.nav-collapse -->
-
-
       </div>
     </div>
   {% endblock %}
 
   {% block default_body %}
-            {% if not session.logged_in %}
-                {% if error %}
-                
-               <!-- <li><td><p id="login_form_error" class=error  ><strong>Error:</strong> {{ error }}</td></li> -->
-                
-                <div class="container">  
-
-                  <div id="alert_div" class="alert alert-danger">  
-                    <a class="close" data-dismiss="alert">×</a>  
-                    <strong>Warning!</strong> {{error}}   &nbsp;&nbsp;&nbsp;                                          
-                  </div>  
-
-                </div> 
-
-
-
-                {% endif %}
-            {% endif %}
+           
+    {% if error %}
+      <div class="container">  
+        <div id="alert_div" class="alert alert-danger">  
+          <a class="close" data-dismiss="alert">×</a>  
+          <strong>Warning!</strong> {{error}}   &nbsp;&nbsp;&nbsp;                                          
+        </div>  
+      </div> 
+    {% endif %}
 
   {% endblock %}  
 
-  {% block body %} 
-
-
-
-
-  {% endblock %}
+  {% block body %} {% endblock %}
     
 
 
@@ -130,10 +103,6 @@
 
   <script type=text/javascript>
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-
-
-
-
 
   </script>
 
@@ -145,7 +114,7 @@
 
     <script src="static/assets/js/jquery.js"></script>
     <script src="static/js/bootstrap.min.js"></script> 
-    <script src="static/js/top_bar_layout.js"></script> 
+
  
   </body>
 </html>
