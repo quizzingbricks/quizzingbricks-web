@@ -4,18 +4,11 @@
  
 }
 
-#login_container {
 
-  padding-top: 12px;
-
+#alert_div {
+	/*margin-right:250px; 
+	margin-left:250px; */
+	/*float:center; */
 }
 
-#navbar_right {
-  float:right;
-  
-}
 
-#login_form_error {
-  padding-top:15px;
-  margin-right: 10px;
-     }

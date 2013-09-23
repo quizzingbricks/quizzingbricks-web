@@ -22,7 +22,9 @@ def about():
 def contact():	
 	return render_template('contact.html')
 
-
+@app.route('/game_board',methods=["GET"])
+def game_board ():
+	return render_template('game_board.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -37,7 +39,7 @@ def login():
 
             flash('You were logged in')
             return redirect(url_for('index'))
-    #return render_template('login.html', error=error)
+    return render_template('index.html', error=error)
 
 @app.route('/logout')
 def logout():
@@ -46,9 +48,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/game_board',methods=["GET"])
-def game_board ():
-	return render_template('game_board.html')
+
 
 
 @app.route('/game_board', methods=["POST"])
