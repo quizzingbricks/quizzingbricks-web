@@ -17,11 +17,6 @@ var TOKEN = {
 function selectToken(token){
     document.getElementById('player_color').innerHTML = token.string;
     selected_token = token;
-    
-    $.post($SCRIPT_ROOT + '/choose_color', { token : token.string },
-    function(data) {
-    $("#resultColor").text(data.result);
-    });
   }
 
 
@@ -48,7 +43,7 @@ function addTokens(x,y) {
         board[x][y] = selected_token;
         board_element.appendChild(create_token(selected_token));
         
-        $.post($SCRIPT_ROOT + '/game_board', { x: x, y: y },
+        $.post($SCRIPT_ROOT + '/test_board', { x: x, y: y },
         function(data) {
         $("#result").text(data.result);
       });
