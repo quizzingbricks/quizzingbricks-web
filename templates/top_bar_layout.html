@@ -30,7 +30,8 @@
     ('/', 'index', 'Index'),
     ('/about', 'about', 'About'),
     ('/contact', 'contact', 'Contact'),
-    ('/game_board', 'game_board', 'Game_board')
+    ('/game_board', 'game_board', 'Game_board'),
+    ('/test_board', 'test_board', 'Test_board')
 ] -%}
 {% set active_page = active_page|default('index') -%}
 </ul>
@@ -72,7 +73,7 @@
               </form> 
               {% else %}
                 <form action="{{ url_for('logout') }}"  >
-                  <button  class="btn btn-default" type=submit value=Logout >Logout </button>
+                  <button  class="btn btn-default" type=submit  >Logout </button>
                 </form>
               {% endif %}
            </ul> 
@@ -88,7 +89,7 @@
       <div class="container">  
         <div id="alert_div" class="alert alert-danger">  
           <a class="close" data-dismiss="alert">×</a>  
-          <strong>Warning!</strong> {{error}}   &nbsp;&nbsp;&nbsp;                                          
+          <strong>Warning!</strong> {{error}}                                             
         </div>  
       </div> 
     {% endif %}
