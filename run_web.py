@@ -47,6 +47,13 @@ def game_board ():
 def test_board ():
 	return render_template('test_board.html')	
 
+@app.route('/register_user',methods=['GET', 'POST'])
+def register_user ():
+	if request.method == 'GET':
+		return render_template('register_user.html')
+	#else:
+	#	flash('You have registerd')
+	#	return redirect(url_for('/'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
