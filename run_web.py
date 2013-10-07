@@ -22,6 +22,14 @@ def about():
 def contact():	
 	return render_template('contact.html')
 
+@app.route('/create_game')
+def create_game():  
+    return render_template('create_game.html')
+
+@app.route('/active_games')
+def active_games():  
+    return render_template('active_games.html')
+
 @app.route('/choose_color', methods=["POST"])
 def choose_color():
 	token = request.form.get('token','None', type=str)
@@ -80,9 +88,9 @@ def tile_placement():
 def test_tile_placement():
     x = request.form.get('x', 0, type=int)
     y = request.form.get('y', 0, type=int)
-    print "test before"
-    print session.__dict__
-    print "test after"
+    #print "test before"
+    #print session.__dict__
+    #print "test after"
     #print session['logged_in']
     return jsonify(result =(x,y))
 
@@ -90,5 +98,5 @@ def test_tile_placement():
 
 
 if __name__ == '__main__':
-#	app.run(host='0.0.0.0',debug=True)
-    app.run(debug=True)
+	app.run(host='0.0.0.0',debug=True)
+#    app.run(debug=True)
