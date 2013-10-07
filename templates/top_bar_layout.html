@@ -38,16 +38,17 @@
   <body>
   {% block top_bar %}
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div id="navbar_container" class="container">
+      <div id="navbar_container" class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+
           <a class="navbar-brand" href="/">Quizzing Bricks</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div id="top_div" class="collapse navbar-collapse">
           <ul  class="nav navbar-nav">
             {% for href, id, caption in navigation_bar %}
               <li{% if id == active_page %} class="active"{% endif
@@ -71,7 +72,7 @@
             
           </ul>
   
-          <ul id="navbar_right" class="navbar-form navbar-right">
+          <ul id="navbar_right" class="navbar-form pull-right">
              {% if not session.logged_in %}
               <form action="{{ url_for('login') }}" class="form-inline"  method=post>
                 <div class="form-group">
